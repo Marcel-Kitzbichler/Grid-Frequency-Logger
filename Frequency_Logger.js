@@ -27,8 +27,9 @@ async function getFrequency() {
     
         setTimeout(getFrequency, 15000);
     }
-    catch {
-        console.log("Unable to reach API"); setTimeout(getFrequency, 15000); return;
+    catch (error){
+        console.log(error); 
+        setTimeout(getFrequency, 15000); return;
     }
     
 }
