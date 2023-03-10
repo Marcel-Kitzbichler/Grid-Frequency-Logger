@@ -3,7 +3,8 @@ const fs = require("fs");
 let log = [];
 let i = 0;
 
-let yourToken = "YourTokenHere";
+const yourToken = "YourTokenHere";
+const rate = 15000; // in ms
 
 async function getFrequency() {
     try{
@@ -18,18 +19,18 @@ async function getFrequency() {
             i++;
             fs.writeFileSync("Log.json", JSON.stringify(log));
         
-            setTimeout(getFrequency, 15000);
+            setTimeout(getFrequency, rate);
         
             return;
         }
 
         console.log("API Error");
     
-        setTimeout(getFrequency, 15000);
+        setTimeout(getFrequency, rate);
     }
     catch (error){
         console.log(error); 
-        setTimeout(getFrequency, 15000); return;
+        setTimeout(getFrequency, rate); return;
     }
     
 }
